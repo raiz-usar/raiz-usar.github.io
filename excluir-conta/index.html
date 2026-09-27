@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Exclua sua conta Raiz com segurança." />
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' https://cdn.jsdelivr.net; connect-src https://umcscokdtviwklxcrwkx.supabase.co; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'" />
+    <title>Excluir conta — Raiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../" aria-label="Voltar para a página inicial da Raiz">
+        <img src="../assets/logo-optimized.png" alt="Raiz" />
+      </a>
+      <a class="back-link" href="../">Voltar para o site</a>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span></span> Privacidade e controle</p>
+        <h1 id="page-title">Excluir sua <em>conta Raiz</em></h1>
+        <p class="intro-copy">Entre com o mesmo e-mail e senha usados no aplicativo para confirmar que a conta é sua.</p>
+
+        <div class="notice" role="note">
+          <span class="notice-icon" aria-hidden="true">!</span>
+          <div>
+            <strong>Esta ação é definitiva</strong>
+            <p>Sua conta e os conteúdos pessoais vinculados a ela serão excluídos. Não será possível recuperar o acesso depois.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="account-card" aria-labelledby="form-title">
+        <div id="form-view">
+          <div class="card-heading">
+            <span class="step">CONFIRMAÇÃO DE IDENTIDADE</span>
+            <h2 id="form-title">Acesse sua conta</h2>
+            <p>Suas credenciais são usadas somente para confirmar sua identidade.</p>
+          </div>
+
+          <form id="account-form" novalidate>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="username" required placeholder="seuemail@exemplo.com" />
+
+            <label for="password">Senha</label>
+            <div class="password-field">
+              <input id="password" name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Digite sua senha" />
+              <button id="toggle-password" class="password-toggle" type="button" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button>
+            </div>
+
+            <p id="form-message" class="message" role="alert" aria-live="polite"></p>
+
+            <button id="continue-button" class="primary-button" type="submit">
+              <span>Continuar</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+
+          <p class="security-note">A senha não é salva nesta página. A exclusão só é enviada após a confirmação final.</p>
+        </div>
+
+        <div id="success-view" class="success-view" hidden>
+          <span class="success-icon" aria-hidden="true">✓</span>
+          <p class="step">SOLICITAÇÃO CONCLUÍDA</p>
+          <h2>Conta excluída</h2>
+          <p>Seu acesso à Raiz foi encerrado e a sessão deste navegador foi removida.</p>
+          <a class="primary-button" href="../">Voltar para o site</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <img src="../assets/logo-optimized.png" alt="Raiz" />
+      <p>Feito para cuidar de cada história.</p>
+      <span>© 2026 Raiz</span>
+    </footer>
+
+    <dialog id="confirmation-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+      <form method="dialog" class="dialog-card">
+        <button id="close-dialog" class="dialog-close" value="cancel" aria-label="Fechar confirmação" type="submit">×</button>
+        <span class="dialog-icon" aria-hidden="true">!</span>
+        <p class="step">ÚLTIMA CONFIRMAÇÃO</p>
+        <h2 id="dialog-title">Excluir sua conta?</h2>
+        <p id="dialog-description">Esta ação não pode ser desfeita. Para continuar, digite <strong>EXCLUIR</strong> em letras maiúsculas.</p>
+        <p id="authenticated-email" class="authenticated-email"></p>
+
+        <label for="confirmation-text">Digite EXCLUIR</label>
+        <input id="confirmation-text" name="confirmation" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="EXCLUIR" />
+        <p id="dialog-message" class="message" role="alert" aria-live="polite"></p>
+
+        <div class="dialog-actions">
+          <button id="cancel-delete" class="secondary-button" value="cancel" type="submit">Cancelar</button>
+          <button id="confirm-delete" class="danger-button" value="confirm" type="button" disabled>Excluir conta</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js" crossorigin="anonymous"></script>
+    <script src="./config.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

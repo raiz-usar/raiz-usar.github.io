@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Recupere o acesso à sua conta Raiz com segurança." />
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' https://cdn.jsdelivr.net; connect-src https://umcscokdtviwklxcrwkx.supabase.co; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'" />
+    <title>Recuperar senha — Raiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../" aria-label="Voltar para a página inicial da Raiz">
+        <img src="../assets/logo-optimized.png" alt="Raiz" />
+      </a>
+      <a class="back-link" href="../">Voltar para o site</a>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span></span> Acesso seguro</p>
+        <h1 id="page-title">Volte a cuidar da sua <em>história.</em></h1>
+        <p class="intro-copy">Recupere sua senha em poucos passos e continue acompanhando sua jornada de cuidado.</p>
+
+        <div class="notice" role="note">
+          <span class="notice-icon" aria-hidden="true">✦</span>
+          <div>
+            <strong>Seu acesso continua protegido</strong>
+            <p>O link de recuperação é enviado somente para o e-mail vinculado à conta e expira automaticamente.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="account-card" aria-live="polite">
+        <div id="request-view">
+          <div class="card-heading">
+            <span class="step">RECUPERAR ACESSO</span>
+            <h2 id="request-title">Esqueceu sua senha?</h2>
+            <p>Informe seu e-mail para receber um link seguro de recuperação.</p>
+          </div>
+
+          <form id="request-form" novalidate aria-labelledby="request-title">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="seuemail@exemplo.com" />
+            <p id="request-message" class="message" role="alert"></p>
+            <button id="request-button" class="primary-button" type="submit">
+              <span>Enviar link de recuperação</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+
+          <p class="security-note">Por segurança, não informamos se um e-mail está ou não cadastrado.</p>
+        </div>
+
+        <div id="email-sent-view" class="result-view" hidden>
+          <span class="result-icon" aria-hidden="true">✓</span>
+          <p class="step">E-MAIL ENVIADO</p>
+          <h2>Confira sua caixa de entrada</h2>
+          <p>Se houver uma conta vinculada a <strong id="sent-email"></strong>, você receberá o link para criar uma nova senha.</p>
+          <button id="send-again-button" class="secondary-button full-button" type="button">Tentar outro e-mail</button>
+        </div>
+
+        <div id="update-view" hidden>
+          <div class="card-heading">
+            <span class="step">NOVA SENHA</span>
+            <h2 id="update-title">Crie uma nova senha</h2>
+            <p>Escolha uma senha com pelo menos 8 caracteres.</p>
+          </div>
+
+          <form id="update-form" novalidate aria-labelledby="update-title">
+            <label for="password">Nova senha</label>
+            <div class="password-field">
+              <input id="password" name="password" type="password" autocomplete="new-password" required minlength="8" placeholder="Digite a nova senha" />
+              <button class="password-toggle" type="button" data-target="password" aria-label="Mostrar nova senha" aria-pressed="false">Mostrar</button>
+            </div>
+
+            <label for="password-confirmation">Confirme a nova senha</label>
+            <div class="password-field">
+              <input id="password-confirmation" name="password-confirmation" type="password" autocomplete="new-password" required minlength="8" placeholder="Digite a senha novamente" />
+              <button class="password-toggle" type="button" data-target="password-confirmation" aria-label="Mostrar confirmação de senha" aria-pressed="false">Mostrar</button>
+            </div>
+
+            <p class="password-hint">Use 8 ou mais caracteres e evite senhas já utilizadas em outros serviços.</p>
+            <p id="update-message" class="message" role="alert"></p>
+            <button id="update-button" class="primary-button" type="submit">
+              <span>Salvar nova senha</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+        </div>
+
+        <div id="success-view" class="result-view" hidden>
+          <span class="result-icon" aria-hidden="true">✓</span>
+          <p class="step">SENHA ATUALIZADA</p>
+          <h2>Pronto, seu acesso foi recuperado</h2>
+          <p>Sua nova senha já está ativa. Agora você pode voltar ao aplicativo Raiz e entrar normalmente.</p>
+          <a class="primary-button" href="../">Voltar para o site</a>
+        </div>
+
+        <div id="invalid-link-view" class="result-view" hidden>
+          <span class="result-icon result-icon-error" aria-hidden="true">!</span>
+          <p class="step">LINK INVÁLIDO</p>
+          <h2>Este link expirou</h2>
+          <p>Solicite um novo e-mail de recuperação para continuar com segurança.</p>
+          <button id="new-link-button" class="primary-button" type="button">Solicitar novo link</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <img src="../assets/logo-optimized.png" alt="Raiz" />
+      <p>Feito para cuidar de cada história.</p>
+      <span>© 2026 Raiz</span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
